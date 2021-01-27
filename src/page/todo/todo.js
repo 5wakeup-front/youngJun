@@ -4,6 +4,9 @@ import TempList from'../../components/tempList'
 import ToDoList from'../../components/toDoList'
 import TodoInput from'../../components/todoInput'
 import { useState } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { todoListAtom } from '../../recoilStates/recoiltemp';
+
 // import { NextPage } from 'next'
 
 
@@ -15,7 +18,8 @@ const Todo = () => {
   const [toDoList, setToDoList] = useState([]);
   const [searchFlag, searchFlagFn] = useState(false);
   const [searchList, searchListFn] = useState([]);
-
+  const [list, setList] = useRecoilState(todoListAtom);
+console.log(list)
   const addTempFn = () => {
     // let add = tempList.slice()
     let add = JSON.parse(JSON.stringify(tempList));
